@@ -1,1 +1,4 @@
-<template>Index</template>
+<template>
+    <Categories></Categories>
+    <Filter></Filter>
+</template>

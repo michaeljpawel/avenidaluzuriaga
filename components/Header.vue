@@ -1,7 +1,7 @@
 <template>
   <nav class="bg-white border-gray-200 dark:bg-slate-900">
     <div class="p-1 lg:hidden bg-black text-xs">
-      <div class="text-white items-center w-full flex gap-4 justify-end font-medium" id="navbar-search">
+      <div class="cursor-pointer text-white items-center w-full flex gap-4 justify-end font-medium" id="navbar-search">
         Iniciar sesión
         <button
           type="button"
@@ -20,7 +20,7 @@
 
         <button
           type="button"
-          class="gap-2 font-semibold text-white bg-gradient-to-r from-green-400 via-green-500 to-green-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-green-300 dark:focus:ring-green-800 rounded-sm text-sm px-5 py-1.5 text-center"
+          class="items-center gap-2 font-semibold text-white bg-gradient-to-r from-green-400 via-green-500 to-green-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-green-300 dark:focus:ring-green-800 rounded-sm text-sm px-5 py-1.5 text-center"
         >
           <Icon name="material-symbols:add-box" size="18px" color="white" />
           Crear anuncio
@@ -42,7 +42,7 @@
           />
         </div>
       </div>
-      <div class="text-white items-center w-full gap-4 justify-end font-medium hidden lg:flex" id="navbar-search">
+      <div class="cursor-pointer text-black dark:text-white items-center w-full gap-4 justify-end font-medium hidden lg:flex" id="navbar-search">
         Iniciar sesión
         <button
           type="button"
