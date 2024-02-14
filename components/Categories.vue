@@ -1,19 +1,20 @@
 <template>
-    <section class="mb-3">
+    <section class="mb-3 max-w-[1220px] mx-auto">
+        <h2>Explora las categorias</h2>
         <swiper :freeMode="false" :loop="true" :modules="modules" :navigation="true" :slideToClickedSlide="false"
             :autoplay="{ delay: 10000, disableOnInteraction: false }" :slidesPerView="getCategoryCount" :spaceBetween="12"
             :watchSlidesProgress="true" class="mySwiper">
 
             <swiper-slide v-for="category in categories" :key="category.id">
                 <Card>
-                    <div class="h-[114px] flex flex-col justify-center items-center">
-                        <div class="h-[65%] flex items-center">
+                    <div
+                        class="flex flex-col h-[130px] relative justify-end bg-[url('https://i.imgur.com/dMdNvgJ_d.jpg?maxwidth=800&shape=thumb&fidelity=high')]">
+                        <!-- <div class="flex items-center">
                             <Icon :name="category.icon" size="36px" color="blue" />
-                        </div>
-                        <div class="h-[35%] flex flex-col">
-                            <span>{{ category.name }}</span>
-                            <span>{{ category.count }}</span>
-
+                        </div> -->
+                        <div class="flex flex-col justify-center items-center bg-lime-400  p-3">
+                            <div class="font-medium">{{ category.name }}</div>
+                            <div class=" text-[11px] text-center">{{ category.count }} anuncios</div>
                         </div>
                     </div>
                 </Card>
@@ -127,7 +128,7 @@ export default defineComponent({
 
     computed: {
         getCategoryCount() {
-            return this.isXxl ? 10 : this.isXl ? 8 : this.isMd ? 7 : this.isSm ? 4 : 4;
+            return this.isXxl ? 10 : this.isXl ? 8 : this.isMd ? 6 : this.isSm ? 3 : 3;
         },
     }
 
