@@ -1,5 +1,5 @@
 <template>
-  <nav class="bg-white border-gray-200 dark:bg-slate-900">
+  <nav class="bg-yellow-300	border-gray-200 dark:bg-slate-900 shadow-md">
     <div class="p-1 lg:hidden bg-black text-xs">
       <div class="cursor-pointer text-white items-center w-full flex gap-4 justify-end font-medium" id="navbar-search">
         Iniciar sesión

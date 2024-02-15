@@ -4,10 +4,7 @@
     <section class="max-w-[932px] mx-auto grid grid-cols-3 gap-3">
         <div v-for="(colum, index) in columns" class="gap-3 grid">
             <div v-for="ad in colum">
-                <Card :class="['text-black bg-teal-600 p-3']" :style="{ backgroundColor: getRandomBg }">
-                    <div class="font-bold text-center">{{ ad.title }}</div>
-                    <div class="text-center">{{ ad.content }}</div>
-                </Card>
+                <Ad :ad="ad"></Ad>
             </div>
         </div>
     </section>

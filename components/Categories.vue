@@ -6,18 +6,7 @@
             :watchSlidesProgress="true" class="mySwiper">
 
             <swiper-slide v-for="category in categories" :key="category.id">
-                <Card>
-                    <div
-                        class="flex flex-col h-[130px] relative justify-end bg-[url('https://i.imgur.com/dMdNvgJ_d.jpg?maxwidth=800&shape=thumb&fidelity=high')]">
-                        <!-- <div class="flex items-center">
-                            <Icon :name="category.icon" size="36px" color="blue" />
-                        </div> -->
-                        <div class="flex flex-col justify-center items-center bg-lime-400  p-3">
-                            <div class="font-medium">{{ category.name }}</div>
-                            <div class=" text-[11px] text-center">{{ category.count }} anuncios</div>
-                        </div>
-                    </div>
-                </Card>
+                <Category :category="category"></Category>
             </swiper-slide>
         </swiper>
     </section>
@@ -25,6 +14,7 @@
 
 <script lang="ts">
 import { defineComponent } from 'vue';
+import Vibrant from 'node-vibrant';
 import { Controller, FreeMode, Navigation, Thumbs, Zoom, Autoplay } from 'swiper/modules';
 import { Swiper, SwiperSlide } from 'swiper/vue';
 import 'swiper/css';
