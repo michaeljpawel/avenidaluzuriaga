@@ -30,23 +30,7 @@ export default defineComponent({
         SwiperSlide,
     },
 
-    setup() {
-        const isSm = sm();
-        const isMd = md();
-        const isLg = lg();
-        const isXl = xl();
-        const isXxl = xxl();
-        const isXxxl = xxxl();
-
-        return {
-            isSm,
-            isMd,
-            isLg,
-            isXl,
-            isXxl,
-            isXxxl
-        };
-    },
+    mixins: [BreakpointMixin],
 
     data() {
         return {
@@ -56,60 +40,70 @@ export default defineComponent({
                     id: 1,
                     icon: 'mdi:tools',
                     count: 64,
+                    img: '1.jpg'
                 },
                 {
                     name: 'hogar',
                     id: 2,
                     icon: 'solar:home-bold',
                     count: 7688,
+                    img: '2.jpg'
                 },
                 {
                     name: 'mecanica',
                     id: 3,
                     icon: 'tabler:tools-kitchen-2',
                     count: 645,
+                    img: '3.jpg'
                 },
                 {
                     name: 'mecanica',
                     id: 3,
                     icon: 'tabler:tools-kitchen-2',
                     count: 754,
+                    img: '4.jpg'
                 },
                 {
                     name: 'mecanica',
                     id: 3,
                     icon: 'tabler:tools-kitchen-2',
                     count: 456,
+                    img: '5.jpg'
                 },
                 {
                     name: 'mecanica',
                     id: 3,
                     icon: 'tabler:tools-kitchen-2',
                     count: 45,
+                    img: '6.jpg'
                 },
                 {
                     name: 'mecanica',
                     id: 3,
                     icon: 'tabler:tools-kitchen-2',
                     count: 7976,
+                    img: '7.jpg'
                 },
                 {
                     name: 'mecanica',
                     id: 3,
                     icon: 'tabler:tools-kitchen-2',
                     count: 345,
+                    img: '8.jpg'
                 },
                 {
                     name: 'mecanica',
                     id: 3,
                     icon: 'tabler:tools-kitchen-2',
                     count: 756,
+                    img: '9.jpg'
                 },
                 {
                     name: 'mecanica',
                     id: 3,
                     icon: 'tabler:tools-kitchen-2',
                     count: 564,
+                    img: '10.jpg'
                 }
             ],
             modules: [Zoom, FreeMode, Navigation, Controller, Thumbs, Autoplay],

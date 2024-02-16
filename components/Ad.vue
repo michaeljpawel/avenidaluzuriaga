@@ -30,9 +30,16 @@ export default defineComponent({
         }
     },
 
+    data() {
+
+        return {
+            hex_bg: ['#EF476F', '#FFD166', '#06D6A0', '#118AB2', '#073B4C', '#8AC926', '#6A4C93', '#FFCA3A', '#1982C4'],
+        }
+    },
+
     computed: {
         backgroundColor() {
-            let colors = ['#EF476F', '#FFD166', '#06D6A0', '#118AB2', '#073B4C'];
+            const colors = this.hex_bg;
 
             function randomIntFromInterval(min, max) {
                 // min and max included
@@ -41,36 +48,6 @@ export default defineComponent({
 
             return colors[randomIntFromInterval(0, colors.length - 1)];
         },
-
-        softBg() {
-            const hexColor = this.backgroundColor.replace('#', '');
-            const r = parseInt(hexColor.substring(0, 2), 16);
-            const g = parseInt(hexColor.substring(2, 4), 16);
-            const b = parseInt(hexColor.substring(4, 6), 16);
-
-            // Calcula un color de fondo más suave
-            const softR = Math.floor((255 + r) / 2);
-            const softG = Math.floor((255 + g) / 2);
-            const softB = Math.floor((255 + b) / 2);
-
-            return `rgb(${softR}, ${softG}, ${softB})`;
-        },
-
-        strongBg() {
-            const hexColor = this.backgroundColor.replace('#', '');
-
-            const r = parseInt(hexColor.substring(0, 2), 16);
-            const g = parseInt(hexColor.substring(2, 4), 16);
-            const b = parseInt(hexColor.substring(4, 6), 16);
-
-            // Calcula un color de fondo más intenso
-            const intenseR = Math.min(255, r * 1.5);
-            const intenseG = Math.min(255, g * 1.5);
-            const intenseB = Math.min(255, b * 1.5);
-
-            return `rgb(${intenseR}, ${intenseG}, ${intenseB})`;
-        },
-
 
         textColor() {
             // Calcula el contraste del color de fondo
