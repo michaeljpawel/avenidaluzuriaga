@@ -4,10 +4,11 @@ import tailwindTypography from '@tailwindcss/typography'
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
   devtools: { enabled: true },
-  modules: ['@nuxtjs/tailwindcss', 'nuxt-icon'],
+  modules: [
+    '@nuxtjs/tailwindcss',
+    'nuxt-icon',
+  ],
   tailwindcss: {
-    config: {
-      plugins: [tailwindTypography]
-    }
+    cssPath: '~/assets/css/input.css'
   }
 });

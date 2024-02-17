@@ -12,7 +12,6 @@
 
 <script lang="ts">
 import { defineComponent } from 'vue';
-import Vibrant from 'node-vibrant';
 import ColorThief from 'colorthief';
 
 export default defineComponent({

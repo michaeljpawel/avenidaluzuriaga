@@ -8,6 +8,9 @@
             </div>
         </div>
     </section>
+    <Modal v-model="show">
+        hola
+    </Modal>
 </template>
 
 <script lang="ts">
@@ -133,6 +136,7 @@ export default defineComponent({
                 },
             ],
             //numColumns: 3,
+            show: true,
         }
     },
 
