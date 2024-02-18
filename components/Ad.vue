@@ -1,5 +1,5 @@
 <template>
-    <Card class="overflow-hidden" :style="{ backgroundColor: backgroundColor, color: textColor }">
+    <Card v-if="ad" class="overflow-hidden" :style="{ backgroundColor: backgroundColor, color: textColor }">
         <div class="p-3">
             <div class="font-bold text-center">{{ ad.title }}</div>
             <div class="text-center">{{ ad.content }}</div>
@@ -27,7 +27,10 @@ export default defineComponent({
         ad: {
             type: Object,
             required: true,
-        }
+        },
+
+        bg: String,
+
     },
 
     data() {
@@ -46,7 +49,7 @@ export default defineComponent({
                 return Math.floor(Math.random() * (max - min + 1) + min);
             }
 
-            return colors[randomIntFromInterval(0, colors.length - 1)];
+            return this.bg || colors[randomIntFromInterval(0, colors.length - 1)];
         },
 
         textColor() {

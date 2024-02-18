@@ -29,8 +29,6 @@ export default defineComponent({
         SwiperSlide,
     },
 
-    mixins: [BreakpointMixin],
-
     data() {
         return {
             categories: [
@@ -111,7 +109,7 @@ export default defineComponent({
 
     computed: {
         getCategoryCount() {
-            return this.isXxl ? 10 : this.isXl ? 8 : this.isMd ? 6 : this.isSm ? 3 : 3;
+            return isXxl.value ? 10 : isXl.value ? 8 : isMd.value ? 6 : isSm.value ? 3 : 3;
         },
     }
 

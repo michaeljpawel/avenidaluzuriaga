@@ -1,23 +1,11 @@
-import { defineComponent } from 'vue';
+import { breakpointsTailwind, useBreakpoints } from '@vueuse/core'
 
-export default defineComponent({
-    data() {
-        const isXs = xs();
-        const isSm = sm();
-        const isMd = md();
-        const isLg = lg();
-        const isXl = xl();
-        const isXxl = xxl();
-        const isXxxl = xxxl();
+const breakpoints = useBreakpoints(breakpointsTailwind)
 
-        return {
-            isXs,
-            isSm,
-            isMd,
-            isLg,
-            isXl,
-            isXxl,
-            isXxxl
-        };
-    },
-})
+
+export const isXm = breakpoints.smaller('sm')
+export const isSm = breakpoints.greater('sm')
+export const isMd = breakpoints.greater('md')
+export const isLg = breakpoints.greater('lg')
+export const isXl = breakpoints.greater('xl')
+export const isXxl = breakpoints.greater('2xl')
