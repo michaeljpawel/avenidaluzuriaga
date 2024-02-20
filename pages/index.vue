@@ -9,7 +9,7 @@
         </div>
     </section>
     <Modal v-model="show_ad">
-        <Ad :ad="selected_ad"></Ad>
+        <Ad :ad="selected_ad" :showContact="true"></Ad>
     </Modal>
 
     <div>
@@ -18,120 +18,10 @@
 </template>
 
 <script setup lang="ts">
+import PocketBase from 'pocketbase';
 
-const ads = ref([
-    {
-        title: '1',
-        content: 'Especializado en comida marina',
-        format: 'text',
-        contact: {
-            mobile_number: '924094526',
-            email: "email.com"
-        }
-
-    },
-    {
-        title: '2',
-        content: 'Especializado en comida marina',
-        format: 'text',
-        contact: {
-            mobile_number: '924094526',
-            email: "email.com"
-        }
-
-    },
-    {
-        title: '3',
-        content: 'Especializado en comida marina con mas de x años de experiencia y 000000 000000 000000 000000 000000 000000 000000 000000 000000 000000 000000 000000',
-        format: 'text',
-        contact: {
-            mobile_number: '924094526',
-            email: "email.com"
-        }
-
-    },
-
-    {
-        title: '4',
-        content: 'Especializado en comida marina',
-        format: 'text',
-        contact: {
-            mobile_number: '924094526',
-            email: "email.com"
-        }
-
-    },
-    {
-        title: '5',
-        content: 'Especializado en comida marina',
-        format: 'text',
-        contact: {
-            mobile_number: '924094526',
-            email: "email.com"
-        }
-
-    },
-    {
-        title: '6',
-        content: 'Especializado en comida marina',
-        format: 'text',
-        contact: {
-            mobile_number: '924094526',
-            email: "email.com"
-        }
-
-    },
-    {
-        title: '7',
-        content: 'Especializado en comida marina',
-        format: 'text',
-        contact: {
-            mobile_number: '924094526',
-            email: "email.com"
-        }
-
-    },
-    {
-        title: '8',
-        content: 'Especializado en comida marina',
-        format: 'text',
-        contact: {
-            mobile_number: '924094526',
-            email: "email.com"
-        }
-
-    },
-    {
-        title: '9',
-        content: 'Especializado en comida marina',
-        format: 'text',
-        contact: {
-            mobile_number: '924094526',
-            email: "email.com"
-        }
-
-    },
-    {
-        title: '10',
-        content: 'Especializado en comida marina',
-        format: 'text',
-        contact: {
-            mobile_number: '924094526',
-            email: "email.com"
-        }
-
-    },
-    {
-        title: '11',
-        content: 'Especializado en comida marina',
-        format: 'text',
-        contact: {
-            mobile_number: '924094526',
-            email: "email.com"
-        }
-
-    },
-]);
+const ads = ref([]);
+const columns = ref([]);
 
 const selected_ad = ref({});
 const show_ad = ref(false);
@@ -141,21 +31,54 @@ const onSelectedAd = (ad) => {
     show_ad.value = true;
 };
 
-const columns = computed(() => {
+const initColums = () => {
     const numColumns = isLg.value ? 3 : isMd.value ? 2 : 1;
     const initialColumns = Array.from({ length: numColumns }, () => []);
     const distributedAds = ads.value.reduce((columns, ad, index) => {
         const columnIndex = index % numColumns;
+        ad.bg = ad.bg || randomItem(hexColors);
         columns[columnIndex].push(ad);
         return columns;
     }, initialColumns);
     return distributedAds;
-});
+};
+
+// const columns = computed(() => {
+//     const numColumns = isLg.value ? 3 : isMd.value ? 2 : 1;
+//     const initialColumns = Array.from({ length: numColumns }, () => []);
+//     const distributedAds = ads.value.reduce((columns, ad, index) => {
+//         const columnIndex = index % numColumns;
+//         ad.bg = ad.bg || randomItem(hexColors);
+//         columns[columnIndex].push(ad);
+//         return columns;
+//     }, initialColumns);
+//     return distributedAds;
+// });
+
+const hexColors = ['#EF476F', '#FFD166', '#06D6A0', '#118AB2', '#073B4C', '#8AC926', '#6A4C93', '#FFCA3A', '#1982C4'];
+const randomItem = (array) => {
+    const randomIndex = Math.floor(Math.random() * array.length);
+    return array[randomIndex];
+};
 
 const columnWidth = computed(() => {
     return isMd.value ? '300px' : isSm.value ? '400px' : '300px';
 });
 
+
+onMounted(async () => {
+    const pb = new PocketBase('http://127.0.0.1:8090');
+
+    const records = await pb.collection('ads').getFullList({
+        sort: '-created',
+    });
+
+    console.log(records);
+
+    ads.value = records;
+
+    columns.value = initColums();
+});
 
 </script>
 

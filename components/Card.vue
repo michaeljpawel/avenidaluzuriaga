@@ -1,10 +1,10 @@
 <template>
-    <div class="bg-white dark:bg-gray-800 soft-shadow rounded-md">
+    <div class="bg-white soft-shadow rounded-md">
         <slot></slot>
     </div>
 </template>
 
-<script lang="ts">
+<script setup lang="ts">
 </script>
 
 <style scooped>
